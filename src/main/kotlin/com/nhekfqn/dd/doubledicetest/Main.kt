@@ -5,6 +5,13 @@ import kotlin.random.Random
 val iterationsNumber = 10_000_000
 
 fun main() {
+    // См. внизу файла
+//    motlinTest()
+//
+//    if (true) {
+//        return
+//    }
+
     // SIMPLE
 
     var simplePositiveCasesCounter = 0
@@ -112,4 +119,31 @@ fun toEffectiveAccuracy(formalAccuracy: Double): Double {
     }
 
     return count.toDouble() / iterationsNumber
+}
+
+fun shouldMiss(accuracy: Int) = Random.nextInt(100) >= accuracy
+
+fun motlinTest() {
+    val power = 80
+    val motlinFactor = 4
+    var motlinCount = 0
+    var count = 0
+    val repetitions = 10_000_000
+    for (i in 1..repetitions) {
+        if (shouldMiss(power)) {
+            motlinCount++;
+        } else {
+            motlinCount = 0;
+        }
+        if (motlinCount == motlinFactor) {
+            count++;
+            motlinCount = 0;
+        }
+        // Доп. продерги генератора
+        for (j in 1..10) {
+            Random.nextDouble()
+        }
+    }
+
+    println("P($motlinFactor): ${count.toDouble() / repetitions}")
 }
