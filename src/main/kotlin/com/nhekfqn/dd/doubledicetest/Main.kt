@@ -46,8 +46,8 @@ fun main() {
     var doubleDicePositiveCasesCounter = 0
 
     for (i in 1..iterationsNumber) {
-        val firstTrySucceed = Random.nextInt(100) >= 20
-        val secondTrySucceed = Random.nextInt(100) >= 20
+        val firstTrySucceed = Random.nextInt(50) >= 10
+        val secondTrySucceed = Random.nextInt(50) >= 10
 
         if (firstTrySucceed || secondTrySucceed) {
             doubleDicePositiveCasesCounter++
@@ -56,5 +56,5 @@ fun main() {
 
     val doubleDicePositiveCaseProbability = doubleDicePositiveCasesCounter.toDouble() / iterationsNumber
 
-    println("Double dice '>= 20' probability: $doubleDicePositiveCaseProbability")
+    println("Double dice '>= 10' probability: $doubleDicePositiveCaseProbability")
 }
